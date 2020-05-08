@@ -1,7 +1,10 @@
 package Javacoding;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -152,13 +155,57 @@ driver.findElementByXPath("(//button[@aria-label='Close'])[2]//span").click();
 //			13) Verify the Check-in date, Check-out date and Guests
 //			14) Read all the Sleeping arrangements and Print
        List<WebElement> sleep_arrange=driver.findElementsByXPath("(//div[@class='_1p3joamp']/following-sibling::div)");
-		int j=sleep_arrange.size();
+	int j=sleep_arrange.size();
 		System.out.println("The total num of sleep arrangements are "+ j);
+		driver.findElementByXPath("//div[contains(text(),'Bed')]/ancestor::div//div[@class='_1mlprnc']").click(); 
+		driver.findElementByXPath("(//div[contains(text(),'Bed')]/ancestor::div//div[@class='_1mlprnc'])[2]").click();
+	//for printing sleeping arrangements	
 		for(int k=0;k<sleep_arrange.size();k++)
 	       {Thread.sleep(500);
-			System.out.println("Sleeping arrangements are "+ sleep_arrange.get(k).getText());
+	       //for first side click
+	       driver.findElementByXPath("//div[contains(text(),'Bed')]/ancestor::div//div[@class='_1mlprnc']").click(); 
+			//for second side click
+	       driver.findElementByXPath("(//div[contains(text(),'Bed')]/ancestor::div//div[@class='_1mlprnc'])[2]").click();
+			//but the glitch it will be clicked in every iteration of loop
+       System.out.println("Sleeping arrangements are "+ sleep_arrange.get(k).getText());
 	       }
-	     //
+//	     //
+/*//   	List<WebElement> eleBedrooms = driver.findElementsByXPath("//div[contains(text(),'Bedroom')]");
+//   	List<WebElement> eleBeds = driver.findElementsByXPath("//div[contains(text(),'bed')]");
+//   	Map<String,String> map=new LinkedHashMap<String,String>();
+//   	Thread.sleep(1000);
+//   	WebElement eleNext = driver.findElementByXPath("//div[@data-plugin-in-point-id='SLEEPING_ARRANGEMENT_DEFAULT']//*[contains(@style,'right')]//button");
+//   	int j=0;
+//   	try
+//   	{
+//   		while(j==0)
+//   		{
+//   		  if(eleNext.isDisplayed())
+//   		   {
+//   		      for(int k=0;i<eleBedrooms.size();i++)
+//   		      {
+//   			     if(eleBedrooms.get(k).getText()!="" && eleBeds.get(k).getText()!="")
+//   			     {
+//   			    map.put(eleBedrooms.get(k).getText(),eleBeds.get(k).getText());
+//   			     }
+//   		       }
+//   			eleNext.click();
+//   			Thread.sleep(1000);
+//   		    }//if
+//   	    }//while
+//   	}
+//   	catch(Exception e)
+//   	{
+//   		for(int l=0;i<eleBedrooms.size();i++)
+//   		{
+//   			map.put(eleBedrooms.get(l).getText(),eleBeds.get(l).getText());
+//   		}
+//   	}
+//   	for(Entry<String,String> eachEntry:map.entrySet())
+//   	{
+//   		System.out.println(eachEntry.getKey()+"-->"+eachEntry.getValue());
+//   	}
+*/
        //15) Close all the browsers
 
 	}
